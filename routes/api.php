@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Models\Favourite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,8 @@ Route::post('/update', [AuthController::class, 'updateUser']);
 
 Route::post('/addfav', [\App\Http\Controllers\FavouriteController::class, 'addFav']);
 Route::get('/gatfav', [\App\Http\Controllers\FavouriteController::class, 'getFav']);
+
+Route::post('/addpost' , [PostController::class , 'add']);
+Route::get('/getposts' , [PostController::class , 'getPosts']);
+
+Route::get('/userInfo/{id}' , [PostController::class , 'userInfo']);
