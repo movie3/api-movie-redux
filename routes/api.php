@@ -28,3 +28,4 @@ Route::post('/update', [AuthController::class, 'updateUser']);
 
 Route::post('/addfav', [\App\Http\Controllers\FavouriteController::class, 'addFav']);
 Route::get('/gatfav', [\App\Http\Controllers\FavouriteController::class, 'getFav']);
+Route::post('/delfav', [\App\Http\Controllers\FavouriteController::class, 'deleteFave']);
