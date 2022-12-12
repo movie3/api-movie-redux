@@ -29,4 +29,10 @@ class FavouriteController extends Controller
     }
 
 
+    public function deleteFave(Request $request){
+        $movieId = $request->movie_id;
+        $userId = $request->user_id;
+        $fav = Favourite::where('user_id', $userId)->where('movies_id',$movieId)->delete();
+        return response()->json($fav);
+    }
 }
