@@ -22,6 +22,8 @@ class AuthController extends Controller
                 'last_name' => 'required|string',
                 'email' => 'required|string|email|unique:users',
                 'password' => 'required|min:8|confirmed',
+                'age' => 'required|string',
+                'gender' => 'required|string'
             ]);
 
             if ($validateUser->fails()) {
@@ -36,8 +38,8 @@ class AuthController extends Controller
                 'last_name' => $request->last_name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'phone' => $request->phone,
-                'address' => $request->address
+                'age' => $request->age,
+                'gender' => $request->gender
             ]);
             // TODO: edit un complete register to completed cuz register by traditional  way
             $token = $user->createToken('authToken')->plainTextToken;
@@ -74,6 +76,21 @@ class AuthController extends Controller
 
     public function socialLogin(Request $request)
     {
+
+    }
+
+    public function updateUser(Request $request)
+    {
+        $userId = $request->user_id;
+        $user = User::find($userId);
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->gender = $request->gender;
+        $user->age = $request->age;
+        $savedUser = $user->save();
+        return response()->json($savedUser);
 
     }
 

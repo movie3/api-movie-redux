@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('favourites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->json('movies_id');
+            $table->bigInteger('movies_id');
             $table->timestamps();
         });
     }

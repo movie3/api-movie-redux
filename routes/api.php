@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Models\Favourite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/register', [AuthController::class, 'register']);
-
 Route::post('/login', [AuthController::class, 'login']);
-
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::post('/update', [AuthController::class, 'updateUser']);
+
+
+Route::post('/addfav', [\App\Http\Controllers\FavouriteController::class, 'addFav']);
+Route::get('/gatfav', [\App\Http\Controllers\FavouriteController::class, 'getFav']);
