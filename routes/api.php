@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Favourite;
 use Illuminate\Http\Request;
@@ -34,3 +35,6 @@ Route::post('/addpost' , [PostController::class , 'add']);
 Route::get('/getposts' , [PostController::class , 'getPosts']);
 
 Route::get('/userInfo/{id}' , [PostController::class , 'userInfo']);
+
+Route::post('/addComment' , [CommentController::class , 'addComment']);
+Route::get('/getComments/{id}' , [CommentController::class , 'getComments']);

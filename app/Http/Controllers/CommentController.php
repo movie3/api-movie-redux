@@ -24,7 +24,7 @@ class CommentController extends Controller
     }
 
     public function getComments($id) {
-        $comments = Comment::all()->where('post_id' , $id);
+        $comments = Comment::where('post_id' , $id)->get();
         return response()->json($comments);
     }
 
