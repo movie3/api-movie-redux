@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
+            $table->string('user_img')->default('https://static.vecteezy.com/system/resources/previews/004/476/155/original/young-man-with-beard-avatar-character-icon-free-vector.jpg');
             $table->string('role')->default('user');
             $table->string('gender')->default('male');
             $table->integer('age')->default(18);

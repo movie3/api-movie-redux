@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     //
-    public function addComment(Request $request) {
+    public function addComment(Request $request)
+    {
         $userId = $request->user_id;
         $postId = $request->post_id;
         $commentDesc = $request->comment;
         // return response()->json($userId);
-       
+
         $comment = Comment::create([
             'user_id' => $userId,
             'post_id' => $postId,
@@ -23,14 +24,22 @@ class CommentController extends Controller
         return response()->json($comment);
     }
 
-    public function getComments($id) {
-        $comments = Comment::where('post_id' , $id)->get();
+    public function getComments($id)
+    {
+        $comments = Comment::where('post_id', $id)->get();
         return response()->json($comments);
     }
 
-    public function userInfo($id) {
+    public function userInfo($id)
+    {
         $comment = Comment::find($id);
         $user = User::find($comment->user_id);
         return response()->json($user);
+    }
+
+    public function getUserComment($user_id)
+    {
+        $comment = Comment::where('user_id', $user_id)->get();
+        return response()->json($comment);
     }
 }

@@ -101,4 +101,22 @@ class AuthController extends Controller
             'message' => 'Logged out'
         ]);
     }
+
+    public function getUserInfo($id)
+    {
+        return response()->json(User::find($id));
+    }
+
+    public function updateUserImg(Request $request)
+    {
+        $user_id = $request->user_id;
+        $user_img = $request->user_img;
+
+        $user = User::find($user_id);
+        $user->user_img = $user_img;
+        $user->save();
+
+        response()->json($user);
+
+    }
 }
